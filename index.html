@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UMBRA | Exclusive Fragrances</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;500&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
-            background: #050505;
+            background: #000;
             color: #fff;
             font-family: 'Montserrat', sans-serif;
             overflow-x: hidden;
         }
 
-        /* Hero Section */
         .hero {
             height: 100vh;
             display: flex;
@@ -24,97 +23,112 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            background: radial-gradient(circle at center, #1a1a1a 0%, #050505 100%);
+            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1583445013765-48c220017141?q=80&w=2072&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
         }
 
         h1 {
             font-family: 'Cinzel', serif;
-            font-size: clamp(3rem, 10vw, 6rem);
-            letter-spacing: 15px;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-            margin-bottom: 10px;
+            font-size: clamp(3.5rem, 12vw, 7rem);
+            letter-spacing: 18px;
+            color: #fff;
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
         }
 
         .subtitle {
-            font-size: 0.7rem;
-            letter-spacing: 8px;
-            color: #a4a4a4;
+            font-size: 0.8rem;
+            letter-spacing: 10px;
+            color: #d4af37;
             text-transform: uppercase;
-            margin-bottom: 40px;
+            margin-top: 10px;
         }
 
-        /* Catalog Section */
         .catalog {
             padding: 100px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
+            background: #050505;
         }
 
         .section-title {
             font-family: 'Cinzel', serif;
             text-align: center;
-            font-size: 1.5rem;
-            letter-spacing: 5px;
-            margin-bottom: 60px;
-            color: #d4af37;
+            font-size: 2rem;
+            letter-spacing: 6px;
+            margin-bottom: 80px;
+            color: #fff;
         }
 
         .products {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 50px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .card {
-            background: #0a0a0a;
+            background: #0c0c0c;
             border: 1px solid #1a1a1a;
-            padding: 30px;
+            padding: 0;
             text-align: center;
-            transition: 0.4s;
+            transition: 0.5s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .card:hover {
             border-color: #d4af37;
-            transform: translateY(-10px);
+            transform: scale(1.02);
+        }
+
+        .img-container {
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .card img {
-            width: 100%;
-            height: 250px;
+            width: 85%;
+            height: 85%;
             object-fit: contain;
-            margin-bottom: 20px;
-            filter: grayscale(20%);
+            transition: 0.5s;
+        }
+
+        .card-info {
+            padding: 30px;
         }
 
         .card h3 {
             font-family: 'Cinzel', serif;
-            font-size: 1.2rem;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #888;
-            font-size: 0.8rem;
-            margin-bottom: 20px;
+            font-size: 1.4rem;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+            color: #fff;
         }
 
         .price {
             display: block;
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             color: #d4af37;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            font-weight: 300;
         }
 
         .btn-buy {
-            display: inline-block;
-            padding: 10px 25px;
+            display: block;
+            padding: 15px;
+            background: transparent;
             border: 1px solid #d4af37;
             color: #d4af37;
             text-decoration: none;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            transition: 0.3s;
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            transition: 0.4s;
+            text-transform: uppercase;
         }
 
         .btn-buy:hover {
@@ -123,11 +137,13 @@
         }
 
         footer {
-            padding: 50px;
+            padding: 60px;
+            background: #000;
             text-align: center;
-            font-size: 0.6rem;
-            letter-spacing: 3px;
-            color: #444;
+            font-size: 0.7rem;
+            letter-spacing: 4px;
+            color: #333;
+            border-top: 1px solid #111;
         }
     </style>
 </head>
@@ -135,7 +151,7 @@
 
     <div class="hero">
         <h1>UMBRA</h1>
-        <span class="subtitle">Elevate Your Scent</span>
+        <span class="subtitle">Luxury Collection</span>
     </div>
 
     <div class="catalog">
@@ -143,34 +159,43 @@
         <div class="products">
             
             <div class="card">
-                <img src="https://fimgs.net/mdimg/perfume/m.70233.jpg" alt="Lattafa Asad">
-                <h3>LATTAFA ASAD</h3>
-                <p>Black Pepper, Pineapple, Patchouli</p>
-                <span class="price">35€</span>
-                <a href="https://wa.me/34636265430?text=Hola,%20quiero%20el%20Asad" class="btn-buy">WHATSAPP</a>
+                <div class="img-container">
+                    <img src="https://m.media-amazon.com/images/I/61kYmN-zZEL._SL1500_.jpg" alt="Lattafa Asad">
+                </div>
+                <div class="card-info">
+                    <h3>LATTAFA ASAD</h3>
+                    <span class="price">35€</span>
+                    <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Lattafa%20Asad" class="btn-buy">CONSULTAR DISPONIBILIDAD</a>
+                </div>
             </div>
 
             <div class="card">
-                <img src="https://fimgs.net/mdimg/perfume/m.75886.jpg" alt="Lattafa Khamrah">
-                <h3>LATTAFA KHAMRAH</h3>
-                <p>Cinnamon, Dates, Praline, Vanilla</p>
-                <span class="price">45€</span>
-                <a href="https://wa.me/34636265430?text=Hola,%20quiero%20el%20Khamrah" class="btn-buy">WHATSAPP</a>
+                <div class="img-container">
+                    <img src="https://m.media-amazon.com/images/I/71YvYlV1MCL._SL1500_.jpg" alt="Lattafa Khamrah">
+                </div>
+                <div class="card-info">
+                    <h3>LATTAFA KHAMRAH</h3>
+                    <span class="price">45€</span>
+                    <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Lattafa%20Khamrah" class="btn-buy">CONSULTAR DISPONIBILIDAD</a>
+                </div>
             </div>
 
             <div class="card">
-                <img src="https://fimgs.net/mdimg/perfume/m.30291.jpg" alt="Club De Nuit">
-                <h3>CLUB DE NUIT</h3>
-                <p>Lemon, Birch, Musk, Ambergris</p>
-                <span class="price">40€</span>
-                <a href="https://wa.me/34636265430?text=Hola,%20quiero%20el%20Club%20de%20Nuit" class="btn-buy">WHATSAPP</a>
+                <div class="img-container">
+                    <img src="https://m.media-amazon.com/images/I/61mNnQvKxNL._SL1000_.jpg" alt="Club De Nuit">
+                </div>
+                <div class="card-info">
+                    <h3>CLUB DE NUIT</h3>
+                    <span class="price">40€</span>
+                    <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Club%20de%20Nuit" class="btn-buy">CONSULTAR DISPONIBILIDAD</a>
+                </div>
             </div>
 
         </div>
     </div>
 
     <footer>
-        UMBRA © 2026 | ESPARREGUERA EXCLUSIVE
+        UMBRA © 2026 | THE ESSENCE OF ARABIAN LUXURY
     </footer>
 
 </body>
