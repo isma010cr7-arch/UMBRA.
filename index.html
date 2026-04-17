@@ -3,199 +3,239 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UMBRA | Exclusive Fragrances</title>
+    <title>UMBRA | Perfumería Árabe</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
 
         body {
-            background: #000;
-            color: #fff;
+            background-color: #fff;
+            color: #000;
             font-family: 'Montserrat', sans-serif;
-            overflow-x: hidden;
         }
 
-        .hero {
-            height: 100vh;
+        /* BARRA SUPERIOR (ANUNCIO) */
+        .top-bar {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 8px;
+            font-size: 0.65rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* NAVEGACIÓN ESTILO ANAHDA */
+        header {
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 1000;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1583445013765-48c220017141?q=80&w=2072&auto=format&fit=crop');
+            padding: 20px 10px;
+        }
+
+        .logo {
+            font-family: 'Cinzel', serif;
+            font-size: 2.2rem;
+            letter-spacing: 10px;
+            color: #000;
+            text-decoration: none;
+            margin-bottom: 15px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #555;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 400;
+            transition: 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #000;
+            text-decoration: underline;
+            text-underline-offset: 5px;
+        }
+
+        /* BANNER PRINCIPAL */
+        .main-banner {
+            width: 100%;
+            height: 70vh;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1592945403244-b3fbafd7f539?q=80&w=2000&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
-        }
-
-        h1 {
-            font-family: 'Cinzel', serif;
-            font-size: clamp(3.5rem, 12vw, 7rem);
-            letter-spacing: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: #fff;
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
-        }
-
-        .subtitle {
-            font-size: 0.8rem;
-            letter-spacing: 10px;
-            color: #d4af37;
-            text-transform: uppercase;
-            margin-top: 10px;
-        }
-
-        .catalog {
-            padding: 100px 20px;
-            background: #050505;
-        }
-
-        .section-title {
-            font-family: 'Cinzel', serif;
             text-align: center;
-            font-size: 2rem;
-            letter-spacing: 6px;
-            margin-bottom: 80px;
-            color: #fff;
         }
 
-        .products {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
+        .banner-text h2 {
+            font-family: 'Cinzel', serif;
+            font-size: 3rem;
+            letter-spacing: 8px;
+            margin-bottom: 20px;
+        }
+
+        /* CATÁLOGO PRODUCTOS */
+        .section {
+            padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
         }
 
-        .card {
-            background: #0c0c0c;
-            border: 1px solid #1a1a1a;
-            padding: 0;
+        .section-title {
             text-align: center;
-            transition: 0.5s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:hover {
-            border-color: #d4af37;
-            transform: scale(1.02);
-        }
-
-        .img-container {
-            width: 100%;
-            height: 400px;
-            overflow: hidden;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .card img {
-            width: 85%;
-            height: 85%;
-            object-fit: contain;
-            transition: 0.5s;
-        }
-
-        .card-info {
-            padding: 30px;
-        }
-
-        .card h3 {
             font-family: 'Cinzel', serif;
-            font-size: 1.4rem;
-            letter-spacing: 3px;
-            margin-bottom: 15px;
-            color: #fff;
-        }
-
-        .price {
-            display: block;
             font-size: 1.5rem;
-            color: #d4af37;
-            margin-bottom: 25px;
-            font-weight: 300;
-        }
-
-        .btn-buy {
-            display: block;
-            padding: 15px;
-            background: transparent;
-            border: 1px solid #d4af37;
-            color: #d4af37;
-            text-decoration: none;
-            font-size: 0.8rem;
-            letter-spacing: 3px;
-            transition: 0.4s;
+            letter-spacing: 4px;
+            margin-bottom: 50px;
             text-transform: uppercase;
         }
 
-        .btn-buy:hover {
-            background: #d4af37;
-            color: #000;
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
         }
 
-        footer {
-            padding: 60px;
+        .product-card {
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: contain;
+            background: #f9f9f9;
+            margin-bottom: 15px;
+        }
+
+        .product-card h3 {
+            font-size: 0.9rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .product-card .price {
+            font-size: 1rem;
+            color: #333;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .btn-whatsapp {
+            display: inline-block;
+            padding: 12px 25px;
+            border: 1px solid #000;
+            color: #000;
+            text-decoration: none;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            transition: 0.3s;
+            text-transform: uppercase;
+        }
+
+        .btn-whatsapp:hover {
             background: #000;
+            color: #fff;
+        }
+
+        /* PIE DE PÁGINA */
+        footer {
+            padding: 50px;
+            border-top: 1px solid #eee;
             text-align: center;
             font-size: 0.7rem;
-            letter-spacing: 4px;
-            color: #333;
-            border-top: 1px solid #111;
+            letter-spacing: 2px;
+            color: #999;
+        }
+
+        @media (max-width: 768px) {
+            .nav-container { padding: 15px 5px; }
+            nav ul { gap: 10px; flex-wrap: wrap; justify-content: center; }
+            nav ul li a { font-size: 0.65rem; }
+            .main-banner { height: 50vh; }
         }
     </style>
 </head>
 <body>
 
-    <div class="hero">
-        <h1>UMBRA</h1>
-        <span class="subtitle">Luxury Collection</span>
-    </div>
+    <div class="top-bar">✨ STOCK LIMITADO EN ESPARREGUERA 🔥</div>
 
-    <div class="catalog">
-        <h2 class="section-title">THE SELECTION</h2>
-        <div class="products">
-            
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://m.media-amazon.com/images/I/61kYmN-zZEL._SL1500_.jpg" alt="Lattafa Asad">
-                </div>
-                <div class="card-info">
-                    <h3>LATTAFA ASAD</h3>
-                    <span class="price">35€</span>
-                    <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Lattafa%20Asad" class="btn-buy">CONSULTAR DISPONIBILIDAD</a>
-                </div>
-            </div>
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">UMBRA</a>
+            <nav>
+                <ul>
+                    <li><a href="#inicio">INICIO</a></li>
+                    <li><a href="#hombre">HOMBRE</a></li>
+                    <li><a href="#mujer">MUJER</a></li>
+                    <li><a href="#contacto">CONTACTO</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
 
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://m.media-amazon.com/images/I/71YvYlV1MCL._SL1500_.jpg" alt="Lattafa Khamrah">
-                </div>
-                <div class="card-info">
-                    <h3>LATTAFA KHAMRAH</h3>
-                    <span class="price">45€</span>
-                    <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Lattafa%20Khamrah" class="btn-buy">CONSULTAR DISPONIBILIDAD</a>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="img-container">
-                    <img src="https://m.media-amazon.com/images/I/61mNnQvKxNL._SL1000_.jpg" alt="Club De Nuit">
-                </div>
-                <div class="card-info">
-                    <h3>CLUB DE NUIT</h3>
-                    <span class="price">40€</span>
-                    <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Club%20de%20Nuit" class="btn-buy">CONSULTAR DISPONIBILIDAD</a>
-                </div>
-            </div>
-
+    <div id="inicio" class="main-banner">
+        <div class="banner-text">
+            <h2>NEW ERA</h2>
+            <a href="#catalogo" class="btn-whatsapp" style="background:#fff; border:none;">VER COLECCIÓN</a>
         </div>
     </div>
 
-    <footer>
-        UMBRA © 2026 | THE ESSENCE OF ARABIAN LUXURY
+    <section id="catalogo" class="section">
+        <h2 class="section-title">LO MÁS BUSCADO</h2>
+        <div class="grid">
+            
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61kYmN-zZEL._SL1500_.jpg" alt="Asad">
+                <h3>LATTAFA ASAD</h3>
+                <span class="price">35,00€</span>
+                <a href="https://wa.me/34636265430?text=Hola,%20quiero%20el%20Asad" class="btn-whatsapp">PEDIR POR WHATSAPP</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/71YvYlV1MCL._SL1500_.jpg" alt="Khamrah">
+                <h3>LATTAFA KHAMRAH</h3>
+                <span class="price">45,00€</span>
+                <a href="https://wa.me/34636265430?text=Hola,%20quiero%20el%20Khamrah" class="btn-whatsapp">PEDIR POR WHATSAPP</a>
+            </div>
+
+            <div class="product-card">
+                <img src="https://m.media-amazon.com/images/I/61mNnQvKxNL._SL1000_.jpg" alt="Club De Nuit">
+                <h3>CLUB DE NUIT INTENSE</h3>
+                <span class="price">40,00€</span>
+                <a href="https://wa.me/34636265430?text=Hola,%20quiero%20el%20Club%20de%20Nuit" class="btn-whatsapp">PEDIR POR WHATSAPP</a>
+            </div>
+
+        </div>
+    </section>
+
+    <footer id="contacto">
+        UMBRA &copy; 2026 | ESPARREGUERA | TODOS LOS DERECHOS RESERVADOS
     </footer>
 
 </body>
