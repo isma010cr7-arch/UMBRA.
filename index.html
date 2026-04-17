@@ -3,217 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UMBRA | Arabian Luxury</title>
+    <title>UMBRA | Exclusive Selection</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@200;400;500&display=swap');
 
-        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #fff; color: #000; font-family: 'Montserrat', sans-serif; }
 
-        body { background-color: #fff; color: #000; font-family: 'Montserrat', sans-serif; overflow-x: hidden; }
-
-        /* ANUNCIO SUPERIOR */
-        .promo-bar {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 10px;
-            font-size: 0.65rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 500;
-        }
-
-        /* HEADER & MENU */
+        /* HEADER */
         header {
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid #eee;
             background: #fff;
-            border-bottom: 1px solid #f2f2f2;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            padding: 20px 0;
         }
-
-        .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
         .logo {
             font-family: 'Cinzel', serif;
-            font-size: 2.5rem;
-            letter-spacing: 12px;
-            color: #000;
+            font-size: 3rem;
+            letter-spacing: 15px;
             text-decoration: none;
-            margin-bottom: 20px;
+            color: #000;
             font-weight: 700;
         }
 
-        nav ul { display: flex; list-style: none; gap: 30px; }
-        nav ul li a {
-            text-decoration: none;
-            color: #666;
-            font-size: 0.75rem;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            transition: 0.3s;
-        }
-        nav ul li a:hover { color: #000; font-weight: 500; }
-
-        /* BANNER PRINCIPAL */
-        .hero {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)), url('https://images.unsplash.com/photo-1615484477778-ca3b77940c25?q=80&w=2000&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center;
+        /* MENU PRINCIPAL */
+        .main-nav {
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            color: #fff;
+            height: 70vh;
+            gap: 20px;
         }
-
-        .hero-text { text-align: center; }
-        .hero-text h2 { font-family: 'Cinzel', serif; font-size: 3rem; letter-spacing: 10px; }
-
-        /* SECCIONES */
-        .section { padding: 100px 20px; max-width: 1200px; margin: 0 auto; }
-        .section-title {
+        .nav-card {
+            width: 90%;
+            max-width: 500px;
+            padding: 40px;
+            border: 1px solid #000;
             text-align: center;
-            font-family: 'Cinzel', serif;
-            font-size: 1.8rem;
+            text-transform: uppercase;
             letter-spacing: 5px;
-            margin-bottom: 60px;
+            cursor: pointer;
+            transition: 0.4s;
+            font-family: 'Cinzel', serif;
+            font-size: 1.2rem;
+        }
+        .nav-card:hover { background: #000; color: #fff; }
+
+        /* SECCIONES DE PRODUCTOS (Ocultas por defecto) */
+        .category-page {
+            display: none;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: fadeIn 0.5s ease;
+        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        .back-btn {
+            display: inline-block;
+            margin-bottom: 40px;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            text-decoration: underline;
+            cursor: pointer;
             text-transform: uppercase;
         }
 
-        /* GRID DE PRODUCTOS */
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        
-        .product-card { text-align: center; }
-        .img-box {
-            background: #fcfcfc;
-            padding: 40px;
-            margin-bottom: 20px;
-            transition: 0.4s;
-            border: 1px solid #f5f5f5;
+        .section-title {
+            font-family: 'Cinzel', serif;
+            font-size: 1.5rem;
+            letter-spacing: 5px;
+            margin-bottom: 50px;
+            text-align: center;
         }
-        .img-box:hover { background: #f7f7f7; border-color: #ddd; }
-        .product-card img { width: 100%; height: 350px; object-fit: contain; }
 
-        .product-card h3 { font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 10px; font-weight: 600; text-transform: uppercase; }
-        .product-card .price { display: block; font-size: 1.1rem; color: #333; margin-bottom: 20px; }
-
+        /* GRID PRODUCTOS */
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 30px; }
+        .product { text-align: center; padding: 20px; border: 1px solid #f2f2f2; }
+        .product img { width: 100%; height: 300px; object-fit: contain; margin-bottom: 20px; }
+        .product h3 { font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 10px; }
+        .price { display: block; margin-bottom: 20px; font-weight: 500; }
         .btn-wa {
             display: inline-block;
-            padding: 12px 35px;
+            padding: 10px 25px;
             border: 1px solid #000;
             color: #000;
             text-decoration: none;
-            font-size: 0.7rem;
+            font-size: 0.6rem;
             letter-spacing: 2px;
             text-transform: uppercase;
-            transition: 0.3s;
         }
         .btn-wa:hover { background: #000; color: #fff; }
 
-        /* CONTACTO */
-        .contact-box {
-            background: #f9f9f9;
-            padding: 60px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        footer { padding: 40px; text-align: center; font-size: 0.7rem; color: #bbb; letter-spacing: 2px; }
-
-        @media (max-width: 768px) {
-            nav ul { gap: 15px; }
-            nav ul li a { font-size: 0.6rem; }
-            .hero h2 { font-size: 2rem; }
-        }
+        footer { padding: 40px; text-align: center; font-size: 0.6rem; color: #ccc; letter-spacing: 3px; }
     </style>
 </head>
 <body>
 
-    <div class="promo-bar">ENTREGA EN MANO EN ESPARREGUERA Y ENVÍOS 24H</div>
-
     <header>
-        <div class="header-content">
-            <a href="#" class="logo">UMBRA</a>
-            <nav>
-                <ul>
-                    <li><a href="#inicio">INICIO</a></li>
-                    <li><a href="#hombre">HOMBRE</a></li>
-                    <li><a href="#mujer">MUJER</a></li>
-                    <li><a href="#contacto">CONTACTO</a></li>
-                </ul>
-            </nav>
-        </div>
+        <a href="javascript:void(0)" onclick="showMain()" class="logo">UMBRA</a>
     </header>
 
-    <div id="inicio" class="hero">
-        <div class="hero-text">
-            <h2>NEW DROP</h2>
+    <div id="mainMenu" class="main-nav">
+        <div class="nav-card" onclick="showCategory('hombre')">HOMBRE</div>
+        <div class="nav-card" onclick="showCategory('mujer')">MUJER</div>
+        <div class="nav-card" onclick="showCategory('unisex')">UNISEX</div>
+        <div class="nav-card" onclick="window.location.href='https://wa.me/34636265430'">CONTACTO</div>
+    </div>
+
+    <div id="hombre" class="category-page">
+        <div class="back-btn" onclick="showMain()">← Volver al inicio</div>
+        <h2 class="section-title">COLECCIÓN HOMBRE</h2>
+        <div class="grid">
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/61kYmN-zZEL._SL1500_.jpg" alt="Asad">
+                <h3>LATTAFA ASAD</h3>
+                <span class="price">35,00 €</span>
+                <a href="https://wa.me/34636265430?text=Me%20interesa%20el%20Asad" class="btn-wa">SOLICITAR</a>
+            </div>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/61mNnQvKxNL._SL1000_.jpg" alt="Club de Nuit">
+                <h3>CLUB DE NUIT INTENSE</h3>
+                <span class="price">40,00 €</span>
+                <a href="https://wa.me/34636265430?text=Me%20interesa%20el%20Club%20de%20Nuit" class="btn-wa">SOLICITAR</a>
+            </div>
         </div>
     </div>
 
-    <section id="hombre" class="section">
-        <h2 class="section-title">COLECCIÓN HOMBRE</h2>
-        <div class="grid">
-            <div class="product-card">
-                <div class="img-box">
-                    <img src="https://m.media-amazon.com/images/I/61kYmN-zZEL._SL1500_.jpg" alt="Asad">
-                </div>
-                <h3>LATTAFA ASAD</h3>
-                <span class="price">35,00 €</span>
-                <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Lattafa%20Asad" class="btn-wa">CONSULTAR</a>
-            </div>
-            <div class="product-card">
-                <div class="img-box">
-                    <img src="https://m.media-amazon.com/images/I/61mNnQvKxNL._SL1000_.jpg" alt="Club de Nuit">
-                </div>
-                <h3>CLUB DE NUIT INTENSE</h3>
-                <span class="price">40,00 €</span>
-                <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Club%20de%20Nuit" class="btn-wa">CONSULTAR</a>
-            </div>
-        </div>
-    </section>
-
-    <section id="mujer" class="section" style="background: #fafafa;">
+    <div id="mujer" class="category-page">
+        <div class="back-btn" onclick="showMain()">← Volver al inicio</div>
         <h2 class="section-title">COLECCIÓN MUJER</h2>
         <div class="grid">
-            <div class="product-card">
-                <div class="img-box">
-                    <img src="https://m.media-amazon.com/images/I/71YvYlV1MCL._SL1500_.jpg" alt="Khamrah">
-                </div>
-                <h3>LATTAFA KHAMRAH (UNISEX)</h3>
-                <span class="price">45,00 €</span>
-                <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Khamrah" class="btn-wa">CONSULTAR</a>
-            </div>
-            <div class="product-card">
-                <div class="img-box">
-                    <img src="https://m.media-amazon.com/images/I/51r2XG6vVmL._SL1000_.jpg" alt="Yara">
-                </div>
-                <h3>LATTAFA YARA</h3>
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/51r2XG6vVmL._SL1000_.jpg" alt="Yara">
+                <h3>LATTAFA YARA (PINK)</h3>
                 <span class="price">30,00 €</span>
-                <a href="https://wa.me/34636265430?text=Hola,%20me%20interesa%20el%20Lattafa%20Yara" class="btn-wa">CONSULTAR</a>
+                <a href="https://wa.me/34636265430?text=Me%20interesa%20el%20Yara" class="btn-wa">SOLICITAR</a>
             </div>
         </div>
-    </section>
+    </div>
 
-    <section id="contacto" class="section">
-        <div class="contact-box">
-            <h2 class="section-title" style="margin-bottom: 20px;">¿NECESITAS AYUDA?</h2>
-            <p style="font-size: 0.8rem; letter-spacing: 1px; color: #666; margin-bottom: 30px;">Hablamos por WhatsApp para pedidos personalizados y puntos de entrega.</p>
-            <a href="https://wa.me/34636265430" class="btn-wa" style="background: #000; color: #fff;">ESCRIBIR AHORA</a>
+    <div id="unisex" class="category-page">
+        <div class="back-btn" onclick="showMain()">← Volver al inicio</div>
+        <h2 class="section-title">UNISEX / NICHO</h2>
+        <div class="grid">
+            <div class="product">
+                <img src="https://m.media-amazon.com/images/I/71YvYlV1MCL._SL1500_.jpg" alt="Khamrah">
+                <h3>LATTAFA KHAMRAH</h3>
+                <span class="price">45,00 €</span>
+                <a href="https://wa.me/34636265430?text=Me%20interesa%20el%20Khamrah" class="btn-wa">SOLICITAR</a>
+            </div>
         </div>
-    </section>
+    </div>
 
     <footer>
         UMBRA &copy; 2026 | THE ESSENCE OF ARABIAN LUXURY
     </footer>
+
+    <script>
+        function showCategory(catId) {
+            document.getElementById('mainMenu').style.display = 'none';
+            document.querySelectorAll('.category-page').forEach(page => page.style.display = 'none');
+            document.getElementById(catId).style.display = 'block';
+            window.scrollTo(0,0);
+        }
+
+        function showMain() {
+            document.querySelectorAll('.category-page').forEach(page => page.style.display = 'none');
+            document.getElementById('mainMenu').style.display = 'flex';
+        }
+    </script>
 
 </body>
 </html>
