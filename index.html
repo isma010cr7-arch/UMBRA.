@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UMBRA | Parfums d'Exception</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;300;400&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;400&display=swap');
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -18,139 +18,149 @@
             color: #fff;
             font-family: 'Montserrat', sans-serif;
             overflow: hidden;
-            /* Fondo con más profundidad */
             background: radial-gradient(circle at center, #111 0%, #000 100%);
         }
 
-        /* --- EFECTO DE CARGA INICIAL --- */
+        /* FONTO DE PARTÍCULAS DORADAS */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        /* LOADER */
         #loader {
             position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100%;
+            top: 0; left: 0; width: 100%; height: 100%;
             background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 999;
-            transition: opacity 1s ease;
+            display: flex; align-items: center; justify-content: center;
+            z-index: 999; transition: opacity 1s ease;
         }
+        .loader-line { width: 0; height: 1px; background: #9c8441; animation: load 1.2s ease forwards; }
+        @keyframes load { to { width: 200px; } }
 
-        .loader-line {
-            width: 0;
-            height: 1px;
-            background: #9c8441;
-            animation: load 1.5s ease-in-out forwards;
-        }
-
-        @keyframes load {
-            0% { width: 0; }
-            100% { width: 150px; }
-        }
-
-        /* --- CONTENEDOR PRINCIPAL CON ANIMACIÓN --- */
+        /* CONTENEDOR */
         .container {
+            position: relative;
+            z-index: 10;
             text-align: center;
-            width: 90%;
-            max-width: 500px;
+            width: 85%;
+            max-width: 400px;
+            /* Subimos el contenedor para alejarlo del pie de página */
+            margin-top: -5vh; 
             opacity: 0;
-            transform: translateY(20px);
-            animation: fadeInUp 1.5s ease forwards 1.8s; /* Empieza después del loader */
+            animation: fadeInUp 1.5s ease forwards 1.5s;
         }
 
         .logo-img {
             width: 100%;
-            max-width: 420px;
+            max-width: 350px;
             height: auto;
-            margin-bottom: 10px;
-            /* Movimiento suave infinito */
-            animation: float 4s ease-in-out infinite;
-            filter: drop-shadow(0 0 15px rgba(156, 132, 65, 0.15));
+            margin-bottom: 5px;
+            animation: float 5s ease-in-out infinite;
+            filter: drop-shadow(0 0 20px rgba(156, 132, 65, 0.2));
         }
 
         .subtitle {
-            font-size: 0.75rem;
-            letter-spacing: 8px;
+            font-size: 0.7rem;
+            letter-spacing: 10px;
             color: #9c8441;
             text-transform: uppercase;
-            margin-bottom: 60px;
-            font-weight: 300;
-            opacity: 0;
-            animation: fadeIn 2s ease forwards 2.5s;
+            margin-bottom: 80px; /* Más espacio entre subtítulo y botón */
+            font-weight: 200;
+            opacity: 0.7;
         }
 
-        /* --- BOTÓN CON EFECTO --- */
         .btn {
             display: inline-block;
-            padding: 18px 50px;
-            border: 1px solid #9c8441;
+            padding: 18px 55px;
+            border: 1px solid rgba(156, 132, 65, 0.5);
             color: #9c8441;
             text-decoration: none;
             font-size: 0.7rem;
             letter-spacing: 5px;
             text-transform: uppercase;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s ease;
+            transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(5px);
         }
 
         .btn:hover {
-            color: #000;
+            border-color: #9c8441;
             background: #9c8441;
-            box-shadow: 0 0 40px rgba(156, 132, 65, 0.4);
+            color: #000;
+            box-shadow: 0 0 50px rgba(156, 132, 65, 0.4);
+            transform: scale(1.05);
         }
 
-        /* --- ANIMACIONES --- */
-        @keyframes fadeInUp {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            to { opacity: 1; }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+        @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
 
         footer {
             position: absolute;
-            bottom: 30px;
+            bottom: 40px;
             font-size: 0.5rem;
-            letter-spacing: 4px;
-            color: #333;
-            text-transform: uppercase;
+            letter-spacing: 5px;
+            color: #444;
+            width: 100%;
+            text-align: center;
+            z-index: 5;
         }
     </style>
 </head>
 <body>
 
-    <div id="loader">
-        <div class="loader-line"></div>
-    </div>
+    <div id="loader"><div class="loader-line"></div></div>
+    
+    <canvas id="particles-js"></canvas>
 
     <div class="container">
         <img src="logo.png" alt="UMBRA" class="logo-img">
         <p class="subtitle">ELEVATE YOUR SCENT</p>
-        
-        <a href="https://wa.me/34636265430?text=Hola,%20vengo%20de%20la%20web%20y%20me%20gustaría%20ver%20vuestro%20catálogo." class="btn">
-            ENTER THE VAULT
-        </a>
+        <a href="https://wa.me/34636265430" class="btn">ENTER THE VAULT</a>
     </div>
 
-    <footer>ESPARREGUERA | EXCLUSIVE FRAGRANCES</footer>
+    <footer>ESPARREGUERA | EXCLUSIVE SELECTION</footer>
 
     <script>
-        // Quitar el loader cuando cargue
-        window.onload = function() {
-            setTimeout(function() {
+        // Animación de partículas simple
+        const canvas = document.getElementById('particles-js');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        let particles = [];
+        for(let i=0; i<50; i++) {
+            particles.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * canvas.height,
+                size: Math.random() * 2,
+                speed: Math.random() * 0.5
+            });
+        }
+        function animate() {
+            ctx.clearRect(0,0,canvas.width, canvas.height);
+            ctx.fillStyle = '#9c8441';
+            particles.forEach(p => {
+                p.y -= p.speed;
+                if(p.y < 0) p.y = canvas.height;
+                ctx.globalAlpha = 0.3;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.size, 0, Math.PI*2);
+                ctx.fill();
+            });
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        window.onload = () => {
+            setTimeout(() => {
                 document.getElementById('loader').style.opacity = '0';
-                setTimeout(function() {
-                    document.getElementById('loader').style.display = 'none';
-                }, 1000);
-            }, 1500);
+                setTimeout(() => document.getElementById('loader').style.display = 'none', 1000);
+            }, 1000);
         };
     </script>
-
 </body>
 </html>
